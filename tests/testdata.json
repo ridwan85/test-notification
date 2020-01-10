@@ -1,0 +1,35 @@
+{
+  "emailData": {
+    "receiverEmail": "rdwn.dev@gmail.com",
+    "receiverPhoneNumber": "+601121019912",
+    "notificationMessage": "Hello world",
+    "notificationSubject": "test sending",
+    "notificationStatus": "SENDING",
+    "notificationError": null,
+    "notificationProvider": "mailgun",
+    "notificationChannel": "email",
+    "createdBy": "Disbursement"
+  },
+  "smsData": {
+    "receiverEmail": "rdwn.dev@gmail.com",
+    "receiverPhoneNumber": "+601132086314",
+    "notificationMessage": "This is a message sent to a mobile phone",
+    "notificationSubject": "Sending SMS",
+    "notificationStatus": "SENDING",
+    "notificationError": null,
+    "notificationProvider": "twillio",
+    "notificationChannel": "sms",
+    "createdBy": "Disbursement"
+  },
+  "errorData": {
+    "receiverEmail": "rdwn.dev@gmail.com",
+    "receiverPhoneNumber": "+601132086314",
+    "notificationMessage": "This is a message sent to a mobile phone",
+    "notificationSubject": "Sending SMS",
+    "notificationStatus": "SENSA",
+    "notificationError": null,
+    "notificationProvider": "twillio",
+    "notificationChannel": "sms",
+    "createdBy": "Disbursement"
+  }
+}

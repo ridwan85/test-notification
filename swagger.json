@@ -1,0 +1,166 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Api documentation for Xendit Notification Service",
+    "description": "Api documentation for Xendit Notification Service",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Notifications"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/notifications/email/{provider}": {
+      "post": {
+        "tags": ["Sending Email"],
+        "summary": "Send email by provider while log a new notification inside the database",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "description": "Third party mail provider name",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Notification that we want to send email to",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Notifications"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/notifications/SMS/{provider}": {
+      "post": {
+        "tags": ["Sending SMS"],
+        "summary": "Send SMS by provider while log a new notification inside the database",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "description": "Third party SMS provider name",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Notification that we want to send SMS to",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Notifications"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/notifications/all/": {
+      "get": {
+        "tags": ["Get all notifications"],
+        "summary": "Get all notifications in the system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Notifications"
+            }
+          }
+        }
+      }
+    },
+    "/notifications/logs?{fieldName}={fieldValue}": {
+      "get": {
+        "tags": ["Get all notifications by query params"],
+        "summary": "Get all notifications by query params",
+        "parameters": [
+          {
+            "name": "fieldName",
+            "in": "path",
+            "required": true,
+            "description": "Field name based on the notifications model eg: receiverEmail",
+            "type": "string"
+          },
+          {
+            "name": "fieldValue",
+            "in": "path",
+            "description": "Field value of the filed eg: 'ridwan@xendit.co'",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Notifications"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Notifications"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Notifications": {
+      "required": ["Notifications"],
+      "properties": {
+        "notificationStatus": {
+          "type": "string"
+        },
+        "receiverEmail": {
+          "type": "string"
+        },
+        "receiverPhoneNumber": {
+          "type": "string"
+        },
+        "notificationMessage": {
+          "type": "string"
+        },
+        "notificationSubject": {
+          "type": "string"
+        },
+        "notificationError": {
+          "type": "string"
+        },
+        "notificationProvider": {
+          "type": "string"
+        },
+        "notificationChannel": {
+          "type": "string"
+        },
+        "notificationSendId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -132,11 +132,12 @@ router.get("/logs", async (req, res) => {
       value: req.query[key]
     });
   }
+
   try {
     const results = await findByField(
       "Notifications",
-      params.key,
-      params.value
+      params[0].key,
+      params[0].value
     );
     return res.json(results);
   } catch (err) {

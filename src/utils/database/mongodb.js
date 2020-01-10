@@ -70,9 +70,7 @@ export async function find(collectionName) {
 export async function findByField(collectionName, fieldName, field) {
   collectionName = mongoose.model(`${collectionName}`);
   return collectionName
-    .find({
-      [fieldName]: field
-    })
+    .find({ [fieldName]: field })
     .then(results => {
       return results;
     })

@@ -21,7 +21,7 @@ describe("Test api endpoints", () => {
 
   it("Returns notification data by collection field", done => {
     request
-      .get("notifications/logs?notificationChannel='email'")
+      .get("notifications/logs?notificationChannel=email")
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
